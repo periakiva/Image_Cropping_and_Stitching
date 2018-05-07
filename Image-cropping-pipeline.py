@@ -25,21 +25,23 @@ class data_loader(object):
         self.col_crop_range= [j for j in range(0,2401,80)]
 
     def crop_single_image(self,image_number):
-        self.cropped_data[image_number]=[] # list of cropped images. Assume images 2448*2448*3
+        #self.cropped_data[image_number]=[] # list of cropped images. Assume images 2448*2448*3
+        self.cropped_data=[] # list of cropped images. Assume images 2448*2448*3
+
         i_crop = self.row_crop_range
         j_crop = self.col_crop_range
         counter=0
-        image=self.images_data_list[image_number]
+        image=self.images_data_list
         for col in range(0,29):
             for row in range(0,29):
                 temp = image[i_crop[row]:i_crop[row+2],j_crop[col]:j_crop[col+2],:]
                 #mpimg.imsave("image number %s part %s.png"%(image_number,counter), temp)
-                self.cropped_data[image_number].append(temp)
+                self.cropped_data.append(temp)
                 counter=counter+1
 
-    def crop_all_images(self):
-        for image_number in self.images_data_list.keys():
-            self.crop_single_image(image_number)
+    #def crop_all_images(self):
+      #  for image_number in self.images_data_list.keys():
+            #self.crop_single_image(image_number)
             
     def stich_single_image(self,image_number):
         stiched = np.zeros((2400,2400,3))
