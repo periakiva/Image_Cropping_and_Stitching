@@ -17,10 +17,11 @@ import glob
 
 class data_loader(object):
     def __init__(self,images_directory):
-        self.paths=os.listdir(images_directory) #individual paths for each image. directory where the images are located is needed
-        self.images_data_list = {index:plt.imread(images_directory+path) for index,path in zip(range(0,len(self.paths)),self.paths)} # This is a list of numpy arrays for each of the images
-        self.cropped_data={}
-        self.stiched_data={}
+        #self.paths=os.listdir(images_directory) #individual paths for each image. directory where the images are located is needed
+        #self.images_data_list = {index:plt.imread(images_directory+path) for index,path in zip(range(0,len(self.paths)),self.paths)} # This is a list of numpy arrays for each of the images
+        self.images_data_list = plt.imread(images_directory)
+        self.cropped_data=[]
+        #self.stiched_data={}
         self.row_crop_range= [i for i in range(0,2401,80)]
         self.col_crop_range= [j for j in range(0,2401,80)]
 
@@ -61,7 +62,7 @@ class data_loader(object):
         stiched[80:2320,2320:2400,:]=stiched[80:2320,2320:2400,:]//2
         mpimg.imsave("stiched %s.png"%(image_number), stiched)
         #self.stiched_data[image_number]=stiched
-        self.stiched_data[image_number]=stiched
+        self.stiched_data=stiched
 
         
     #def stich_all_images(self):
