@@ -1,19 +1,10 @@
-
 # coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import pandas as pd
 import matplotlib.pylab as plt
 import matplotlib.image as mpimg
 import os
 import glob
-
-
-# In[8]:
-
 
 class data_loader(object):
     def __init__(self,images_directory):
@@ -64,13 +55,9 @@ class data_loader(object):
         #self.stiched_data[image_number]=stiched
         self.stiched_data=stiched
 
-        
     #def stich_all_images(self):
        # for image_number in self.cropped_data.keys():
          #   self.stich_single_image(image_number)
-
-
-# In[9]:
 
 
 direc = "/home/native/projects/ML536/FinalProject/foo/"
